@@ -1,0 +1,30 @@
+<input-group ng-class="{ 'has-error' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }">
+    <ng-form name="{{vm.name}}Form" novalidate>
+    <div class="form-group input-controls custom-dropdown">
+        <label-area>
+            <label for="{{vm.name}}" class="control-label" ng-class="{ 'validation-failed-label' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }"> 
+                {{vm.label}}
+                <span ng-show=" vm.requiredVal ">*</span>
+                </label>
+        </label-area>
+        <div class="captorNGFormInput">
+            <div class="customDropdown">
+                <div 
+                    ng-dropdown-multiselect="" 
+                    name="{{vm.name}}"
+                    options="vm.value" 
+                    selected-model="vm.selectedVal"
+                    extra-settings="vm.dropdownSettings"
+                    translation-texts="vm.translationTexts"
+                    ng-required="vm.requiredVal"
+                    ng-model="vm.selectedVal"
+                    id="{{vm.name}}">
+                </div>
+            </div>
+            <error-message ng-show="vm.validationError && {{vm.name}}Form.$$parentForm.$submitted">-->
+                    <span class="captorValidationErrorMsg" > {{vm.validationError}}</span>
+            </error-message>
+        </div>
+    </div>
+    </ng-form>
+</input-group>

@@ -1,0 +1,21 @@
+<div class="dropdownComponents">
+    <form name="form3" novalidate  ng-controller="dropdownControls as ctrl">
+        <captor-multiselect-dropdown name="dropdown1" 
+                        label="MultiSelect Dropdown" 
+                        placeholder="Select Multiple Values" 
+                        is-required="true" 
+                        value="ctrl.example"
+                        selected-val="ctrl.selected"
+                        name="multiDropDown1">
+        </captor-multiselect-dropdown>
+        <h6>Selected Value : {{ctrl.selected || "none"}}</h6>
+        <div>
+            <button class="btn btn-default btn-waypoint btn-icon btn-save btn-go-forward pull-right" 
+                    ng-class="{ 'captorFormDisabled'  : form3.$invalid , 'captorFormEnabled': form3.$valid }" 
+                    ng-click="ctrl.save(form3)">
+                <span>Save</span>
+                <span class="icon"></span>
+            </button>
+        </div>
+    </form>
+</div>

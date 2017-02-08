@@ -1,0 +1,185 @@
+removed code Angular components :
+
+
+1. maxlength="{{vm.maximumLength}}"
+
+
+2. 
+
+        // if (this.isRequired && this.minimumLength) {
+        //     if (!this.value || this.value.length < this.minimumLength) {
+        //         this.validationError = "has a minium length of " + this.minimumLength;
+        //         return false;
+        //     }
+        // }
+        // if (this.value && this.maximumLength && this.value.length > this.maximumLength) {
+        //     this.validationError = "has a maximum length of " + this.maximumLength;
+        //     return false;
+        // }
+
+
+3.            //        try {
+        //            if (this.value && this.maximumLength && this.value.length > this.maximumLength) {
+        //                this.value = this.value.substring(0, this.maximumLength);
+        //            }
+        //        } catch (e) {
+        //            this.value = '';
+        //        }
+
+
+4.             this.model.$render = function() {
+            //			this.value = this.model.$viewValue;
+        }
+
+
+
+
+
+
+
+
+
+
+<!--<input-group ng-class="{ 'has-error' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }">
+    <ng-form name="{{vm.name}}Form">
+        <label-area>
+            <label for="{{vm.name}}" class="control-label " ng-class="{ 'validation-failed-label' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }"> 
+                {{vm.label}}
+                <span ng-show=" vm.requiredVal ">*</span>
+                </label>
+        </label-area>
+        <input type="{{vm.type}}" class="form-control" placeholder="{{vm.placeholder}}" autocomplete="off" ng-model-options="{allowInvalid: true, debounce: 250} " name="{{vm.name}} " id="{{vm.name}} "  ng-model="vm.value" ng-change="vm.onChange()" ng-click="vm.onClick()" ng-required="vm.requiredVal " ng-minlength="vm.minimumLength" ng-maxlength="vm.maximumLength" uib-popover="{{vm.validationError}} " popover-class="custom-popover-class " popover-trigger="none"
+            popover-animation="true" popover-placement="top" popover-enable="{{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted" popover-is-open="{{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted"
+             value="{{vm.value}}" ng-readonly="{{vm.readOnlyValue}}" >
+        </input>
+        <p>{{vm.readOnlyVal}}</p>
+        <p ng-show="{{vm.name}}Form.email.$invalid && {{vm.name}}Form.$$parentForm.$submitted">Enter a valid email. {{(vm.name + "Form").input.$error}}</p>
+        <error-message ng-show="{{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted ">
+            <h6>{{vm.validationError}}</h6>
+        </error-message>
+    </ng-form>
+</input-group>-->
+
+<!--<input-group ng-class="{ 'has-error' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && ({{vm.name}}Form.{{vm.name}}.$touched || {{vm.name}}Form.$$parentForm.$submitted) } ">
+    {{$parent.$eval({{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && ({{vm.name}}Form.{{vm.name}}.$touched || {{vm.name}}Form.$$parentForm.$submitted))}}
+    <ng-form name="{{vm.name}}Form ">
+        <label-area>
+            <label for="{{vm.name}} ">
+                {{vm.label}}
+                <span ng-show="vm.requiredVal ">*</span>
+                </label>
+            <error-message ng-show="{{vm.validateclass}} ">{{vm.validationError}}</error-message>
+            <div ng-show="{{vm.validateclass}} ">i am here</div>
+        </label-area>
+        <input type="{{vm.type}} " class="form-control " placeholder="{{vm.placeholder}} " autocomplete="off " ng-model-options="{allowInvalid: true, debounce: 250} " name="{{vm.name}} " id="{{vm.name}} " ng-model="vm.value " ng-change="vm.onChange()
+            " ng-click="vm.onclick() "
+            ng-required="vm.requiredVal " ng-minlength="vm.minimumLength " ng-maxlength="vm.maximumLength " popover-trigger="none " uib-popover="{{vm.validationError}} " popover-is-open="{{vm.validateclass}} " popover-class="custom-popover-class
+            " popover-animation="true "
+            popover-placement="top " popover-enable="{{vm.validateclass=$ parent.$eval({{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && ({{vm.name}}Form.{{vm.name}}.$touched || {{vm.name}}Form.$$parentForm.$submitted))}} " ui-mask="{{vm.mask}} "
+            ui-mask-placeholder ui-mask-placeholder-char="_ " value="{{vm.value}} ">
+        </input>
+    </ng-form>
+</input-group>-->
+
+<!--ui-mask="{{vm.mask}}" ui-mask-placeholder ui-mask-placeholder-char="_"-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<input-group>
+    <ng-form name="{{vm.name}}Form" novalidate>
+    <div class="">
+        <label-area>
+            <label for="{{vm.name}}" class="control-label"> 
+                {{vm.label}}
+                <span ng-show=" vm.requiredVal ">*</span>
+                </label>
+        </label-area>
+        <input type="text" 
+                class="form-control singleselect-form-control captorDropdown" 
+                placeholder="{{vm.placeholder}}" 
+                autocomplete="off" 
+                ng-model-options="{allowInvalid: true , debounce: 10, getterSetter: true}" 
+                name="{{vm.name}}" 
+                id="{{vm.name}}" 
+                ng-model="vm.selectedVal" 
+                ng-required="vm.requiredVal"
+                uib-typeahead="state for state in vm.value | filter:$viewValue"
+                typeahead-show-hint="true" 
+                auto-close="disabled"
+                is-open= "true"
+                typeahead-min-length="0"
+                typeahead-template-url="./componentViews/dropdown.component.template.html"
+                
+                >
+        <span class="input-group-addon right singleselect-dropdown-icon" ng-click="vm.focusTextBox(vm.name)"></span>
+        <div  >
+            <ui-select tagging ng-model="vm.selectedVal" class="input-controls dd" >
+                <ui-select-match placeholder="{{vm.placeholder}}" >{{$select.selected}}</ui-select-match>
+                <ui-select-choices repeat="val in vm.value | filter: $select.search">
+                    <div ng-bind-html="val"></div>
+                </ui-select-choices>
+            </ui-select>
+            <span class="input-group-addon right singleselect-dropdown-icon" ng-click="vm.focusTextBox(vm.name)"></span>
+        </div>
+        
+    </div>
+    </ng-form>
+</input-group>-->
+
+<!--
+<input-group>
+    <ng-form name="{{vm.name}}Form" novalidate>
+    <div class="form-group input-controls custom-dropdown">
+        <label-area>
+            <label for="{{vm.name}}" class="control-label"> 
+                {{vm.label}}
+                <span ng-show=" vm.requiredVal ">*</span>
+                </label>
+        </label-area>
+        <input type="text" 
+                class="form-control singleselect-form-control captorDropdown" 
+                placeholder="{{vm.placeholder}}" 
+                autocomplete="off" 
+                ng-model-options="{allowInvalid: true , debounce: 10, getterSetter: true}" 
+                name="{{vm.name}}" 
+                id="{{vm.name}}" 
+                ng-model="vm.selectedVal" 
+                ng-required="vm.requiredVal"
+                uib-typeahead="state for state in vm.value | filter:$viewValue"
+                typeahead-show-hint="true" 
+                auto-close="disabled"
+                is-open= "true"
+                typeahead-min-length="0"
+                typeahead-template-url="./componentViews/dropdown.component.template.html"
+                
+                >
+        <span class="input-group-addon right singleselect-dropdown-icon" ng-click="vm.focusTextBox(vm.name)"></span>
+    </div>
+    </ng-form>
+</input-group>-->

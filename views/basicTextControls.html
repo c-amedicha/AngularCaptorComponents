@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="captorComponents col-xs-6">
+        <form name="form2" novalidate ng-controller="homectrl as ctrl" >
+            <captor-input-text label="First Name" placeholder="Enter First Name" type="text" name="firstName" minimum-length="3" maximum-length="5" is-required="true" value= "ctrl.values.firstName">
+            </captor-input-text>
+            <captor-input-text label="Last Name" placeholder="Enter Last Name" type="text" name="lastName" minimum-length="3" maximum-length="25" is-required="true" value= "ctrl.values.lastName">
+            </captor-input-text>
+            <captor-input-text label="Email" placeholder="Enter Email" type="email" name="email" value= "ctrl.values.email">
+            </captor-input-text>
+            <captor-input-text label="Phone Number" placeholder="Enter Phone Number" type="phone" name="phoneNumber" minimum-length="3" maximum-length="25" value= "ctrl.values.phone1">
+            </captor-input-text>
+            <captor-input-text label="Input SSN" placeholder="Enter SSN" type="ssn" name="ssn" minimum-length="3" maximum-length="25" value= "ctrl.values.ssn">
+            </captor-input-text>
+            <div>
+                <button class="btn btn-default btn-waypoint btn-icon btn-save btn-go-forward pull-right" ng-class="{ 'captorFormDisabled'  : form2.$invalid , 'captorFormEnabled': form2.$valid }" ng-click="ctrl.save(form2)">
+                    <span>Save</span>
+                    <span class="icon"></span>
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="captorComponents col-xs-6">
+        <form name="form1" novalidate ng-controller="homectrl as ctrl" >
+            <captor-input-text label="Password" placeholder="Enter password" type="password" name="password" value= "ctrl.values.password">
+            </captor-input-text>
+            <captor-input-text label="Confirm Password" placeholder="Enter password" type="password" name="password" value= "ctrl.values.confirmPassword">
+            </captor-input-text>
+            <captor-input-text label="ReadOnly SSN" placeholder="Enter SSN" type="ssn" name="ssn2" minimum-length="3" maximum-length="25" hide-display= "true" value= "ctrl.values.ssn2">
+            </captor-input-text>
+            <captor-input-text label="ReadOnly Phone" placeholder="Enter Phone" type="phone" name="phone2" minimum-length="3" maximum-length="25" hide-display= "true" value= "ctrl.values.phone2">
+            </captor-input-text>
+            <div>
+                <button class="btn btn-default btn-waypoint btn-icon btn-save btn-go-forward pull-right" ng-class="{ 'captorFormDisabled'  : form1.$invalid , 'captorFormEnabled': form1.$valid }" ng-click="ctrl.save(form1)">
+                    <span>Save</span>
+                    <span class="icon"></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<input-group ng-class="{ 'has-error' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }">
+    <ng-form name="{{vm.name}}Form" novalidate>
+        <label-area>
+            <label for="{{vm.name}}" class="control-label " ng-class="{ 'validation-failed-label' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }"> 
+                {{vm.label}}
+                <span ng-show=" vm.requiredVal ">*</span>
+                </label>
+        </label-area>
+        <div class="captorNGFormInput">
+            <input type="{{vm.type}}" 
+                    class="form-control" 
+                    placeholder="{{vm.placeholder}}" 
+                    autocomplete="off" 
+                    ng-model-options="{allowInvalid: true , debounce: 10}" 
+                    name="{{vm.name}}" 
+                    id="{{vm.name}}" 
+                    ng-model="vm.value" 
+                    ng-click="vm.onClick()"
+                    ng-change="vm.onChange()" 
+                    ng-required="vm.requiredVal" 
+                    ng-minlength="vm.minimumLength" 
+                    ng-maxlength="vm.maximumLength" 
+                    ng-readonly="{{vm.readOnlyValue}}"
+                    ui-mask="{{ vm.mask }}"
+                    ui-mask-placeholder 
+                    ui-mask-placeholder-char="_">
+            </input>
+            <error-message ng-show="{{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted">
+                <span class="captorValidationErrorMsg" > {{vm.validationError}}</span>
+            </error-message>
+        </div>
+    </ng-form>
+</input-group>

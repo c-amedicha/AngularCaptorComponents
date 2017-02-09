@@ -3,6 +3,9 @@ angular.module('captorAngularElements')
         templateUrl: './componentViews/textbox.component.html',
         controller: InputTextComponent,
         controllerAs: 'vm',
+        require:{
+            parent: '^^form'
+        },
         bindings: {
             label: "@",
             minimumLength: "@",
@@ -18,15 +21,14 @@ angular.module('captorAngularElements')
 
 function InputTextComponent() {
     "use strict"
-    this.mask = "",
+
+    this.$onInit = function() {
+        this.mask = "",
         this.regex = "",
         this.maskValue = false,
         this.readOnlyValue = false,
         this.readOnlyVal = "";
        
-
-    this.$onInit = function() {
-
         if (!this.maximumLength) {
             this.maximumLength = 200;
         }
@@ -94,8 +96,4 @@ function InputTextComponent() {
         this.validationError = '';
         return true;
     };
-
-    this.popOverTest = function(x1,x2,x3){
-        console.log(x1,x2,x3);
-    }
 }

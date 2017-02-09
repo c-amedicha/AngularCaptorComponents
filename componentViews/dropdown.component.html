@@ -1,24 +1,25 @@
-<input-group ng-class="{ 'has-error' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }">
+<input-group ng-class="{ 'has-error' : vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }">
     <ng-form name="{{vm.name}}Form" novalidate>
     <div class="form-group input-controls custom-dropdown">
         <label-area>
-            <label for="{{vm.name}}" class="control-label" ng-class="{ 'validation-failed-label' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }"> 
+            <label for="{{vm.name}}" class="control-label" ng-class="{ 'validation-failed-label' : vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }"> 
                 {{vm.label}}
                 <span ng-show=" vm.requiredVal ">*</span>
                 </label>
         </label-area>
         <div class="captorNGFormInput">
             <div class="customDropdown">
-                <div 
-                    ng-dropdown-multiselect="" 
+                <div ng-dropdown-multiselect="" 
                     name="{{vm.name}}"
+                    ng-class="{ 'validation-failed-border' : vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }"
                     options="vm.value" 
                     selected-model="vm.selectedVal"
                     extra-settings="vm.dropdownSettings"
                     translation-texts="vm.translationTexts"
-                    ng-required="vm.requiredVal"
+                    events="vm.dropdownEvents"
                     ng-model="vm.selectedVal"
-                    id="{{vm.name}}">
+                    id="{{vm.name}}"
+                    ng-change="vm.onChange()">
                 </div>
             </div>
             <error-message ng-show="vm.validationError && {{vm.name}}Form.$$parentForm.$submitted">-->

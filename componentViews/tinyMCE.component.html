@@ -1,0 +1,33 @@
+<input-group>
+    <ng-form name="{{vm.name}}Form" novalidate>
+    <div class="form-group input-controls">
+        <label-area>
+            <label for="{{vm.name}}" class="control-label"> 
+                {{vm.label}}
+                <span ng-show=" vm.requiredVal ">*</span>
+                </label>
+        </label-area>
+        <div class="captorNGFormInput">
+             <div class="row">
+                <div class="col-sm-12">
+                    <div id="tinymceWrapper">
+                        <textarea 
+                            type="textarea" 
+                            name="{{vm.name}}"
+                            id="{{vm.name}}"
+                            class="form-control"
+                            ng-model="vm.value"
+                            ui-tinymce="vm.tinymceOptions"
+                        >
+                        </textarea>
+                        <span class="small text-right counter">{{vm.charCount}} of {{vm.charCount}} characters remaining</span>
+                    </div>
+                </div>
+            </div>
+            <error-message ng-show="vm.validationError && {{vm.name}}Form.$$parentForm.$submitted">-->
+                    <span class="captorValidationErrorMsg" > {{vm.validationError}}</span>
+            </error-message>
+        </div>
+    </div>
+    </ng-form>
+</input-group>

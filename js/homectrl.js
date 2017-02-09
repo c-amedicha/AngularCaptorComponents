@@ -23,6 +23,9 @@ angular.module("captorAngularElements")
             }
         }
     })
+    .controller('tinyMCEControls',function($scope){
+        
+    })
     .controller('dropdownControls', function($scope){
 
         $scope.selected = undefined;
@@ -30,14 +33,16 @@ angular.module("captorAngularElements")
 
         var self = this;
         self.save = function(myForm) {
-            console.log(myForm);
             if (!myForm.$valid) {
                 $scope.formvalid = false;
                 myForm.$setSubmitted();
                 return;
             } else {
                 var displayValues = "The Submitted values are : ";
-                alert("values: \n" + self.selected);
+                for(value in self.selected){
+                    displayValues += "\n -->" + "Value" + " : " + self.selected[value].Value + "\n\t Desctiption :" + self.selected[value].Description;
+                }
+                alert("values: \n" + displayValues);
             }
         }
 

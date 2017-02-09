@@ -34,16 +34,10 @@ removed code Angular components :
 
 
 
-
-
-
-
-
-
-<!--<input-group ng-class="{ 'has-error' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }">
-    <ng-form name="{{vm.name}}Form">
+5. 	<!--<input-group ng-class="{ 'has-error' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }">
+    		<ng-form name="{{vm.name}}Form">
         <label-area>
-            <label for="{{vm.name}}" class="control-label " ng-class="{ 'validation-failed-label' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }"> 
+            	<label for="{{vm.name}}" class="control-label " ng-class="{ 'validation-failed-label' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }"> 
                 {{vm.label}}
                 <span ng-show=" vm.requiredVal ">*</span>
                 </label>
@@ -87,31 +81,30 @@ removed code Angular components :
 
 
 
+6. this.onSelect = function($item, $model, $label) {
+            this.selectedVal = angular.copy($item);
+        }
+
+        this.focusTextBox = function(id){
+            if(this.focusCount < 1){
+                document.querySelector("#" + id).focus();
+                this.focusCount++;
+            }else{
+                document.querySelector("#" + id).blur();
+                this.focusCount = 0;
+            }
+            
+        }
+        this.display=function(){
+            this.hidden=true;
+        }
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<input-group>
+7.	<!--<input-group>
     <ng-form name="{{vm.name}}Form" novalidate>
     <div class="">
         <label-area>
@@ -148,12 +141,12 @@ removed code Angular components :
             <span class="input-group-addon right singleselect-dropdown-icon" ng-click="vm.focusTextBox(vm.name)"></span>
         </div>
         
-    </div>
-    </ng-form>
-</input-group>-->
+    	</div>
+    	</ng-form>
+	</input-group>-->
 
-<!--
-<input-group>
+	<!--
+	<input-group>
     <ng-form name="{{vm.name}}Form" novalidate>
     <div class="form-group input-controls custom-dropdown">
         <label-area>
@@ -182,4 +175,23 @@ removed code Angular components :
         <span class="input-group-addon right singleselect-dropdown-icon" ng-click="vm.focusTextBox(vm.name)"></span>
     </div>
     </ng-form>
-</input-group>-->
+	</input-group>-->
+
+
+
+
+
+8. 	scss:	.custom-popover-class {
+    		background-color: #AE4551;
+    		border-color: #c04b59;
+    		border-radius: 5px;
+    		color: #fff;
+		}
+
+		.popover-content {
+    			padding: 0px 5px;
+		}
+
+		.popover.top>.arrow:after {
+   			 border-top-color: #c04b59;
+		}

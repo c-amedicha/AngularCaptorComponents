@@ -3,6 +3,9 @@ angular.module('captorAngularElements')
         templateUrl: './componentViews/dropdown.component.html',
         controller: dropdownComponent,
         controllerAs: 'vm',
+        require:{
+            parent: '^^form'
+        },
         bindings: {
             name: "@",
             label: "@",
@@ -16,7 +19,6 @@ angular.module('captorAngularElements')
     function dropdownComponent(){
         "use strict"
         this.$onInit = function() {
-            
             this.focusCount = 0;
             this.hidden=false;
             this.selectedVal = [];
@@ -41,6 +43,12 @@ angular.module('captorAngularElements')
             this.translationTexts = {
                 buttonDefaultText: this.placeholder
             };
+            var self = this;
+            this.dropdownEvents = {
+                onSelectionChanged: function(item){
+                    self.validateCaptorForm();
+                }
+            };
 
             if (this.isRequired) {
                 this.requiredVal = this.isRequired;
@@ -51,28 +59,11 @@ angular.module('captorAngularElements')
             this.validationError = '';
             if (this.requiredVal && this.selectedVal.length == 0) {
                 this.validationError = "This is a required field ";
+                this.parent.$setValidity('drpDwn', false);
                 return false;
             }
             this.validationError = '';
+            this.parent.$setValidity('drpDwn', true);
             return true;
-        };
-
-
-        this.onSelect = function($item, $model, $label) {
-            this.selectedVal = angular.copy($item);
-        }
-
-        this.focusTextBox = function(id){
-            if(this.focusCount < 1){
-                document.querySelector("#" + id).focus();
-                this.focusCount++;
-            }else{
-                document.querySelector("#" + id).blur();
-                this.focusCount = 0;
-            }
-            
-        }
-        this.display=function(){
-            this.hidden=true;
-        }
+        };        
     }

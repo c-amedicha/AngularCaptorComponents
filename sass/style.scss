@@ -10,19 +10,14 @@
     padding: 20px;
 }
 
-.custom-popover-class {
-    background-color: #AE4551;
-    border-color: #c04b59;
-    border-radius: 5px;
-    color: #fff;
+// For clearing floats
+.borderComponents:before,
+.borderComponents:after {
+	content: '';
+	display: table;
 }
-
-.popover-content {
-    padding: 0px 5px;
-}
-
-.popover.top>.arrow:after {
-    border-top-color: #c04b59;
+.borderComponents:after {
+	clear: both;
 }
 
 .validation-failed-label {
@@ -40,6 +35,7 @@
     font-size: 14px;
 }
 
+/* Captor form components  */
 .captorComponents {
     width: 50%;
     margin: auto;
@@ -61,7 +57,6 @@
     cursor: pointer; 
 }
 
-
 /* Dropdown Component */
 .customDropdown{
     width: 100%;
@@ -80,40 +75,40 @@
 }
 
 .captorDropdownSingleSelect span.caret{
-        float: right;
-        height: 34px;
-        margin-top: -34px;
-        padding-left: 19px;
-        top: 34px;
-        right: -2px;
-        position: absolute;
-        border-radius: 0px 20px 16px 0px;
-        width: 10%;
-        white-space: nowrap;
-        vertical-align: middle;
-        display: table-cell;
-        background: #30373e;
-        font-weight: 400;
-        font-size:14px;
-        line-height: 1;
-        color: #bbb;
-        text-align: center;
-        cursor: pointer;
-        border: 2px solid #8f8f8f;
-        z-index:0;
-        box-sizing: border-box;
-        &:before{
-                content: "\f104";
-                font-family: 'Ionicons';
-                font-size: 16px;
-                left: -10px;
-                position: relative;
-                top: 25%;
-            }
-        &:hover {
-            border-color:rgba(248,151,29,0.77);
-            border-left-color:rgba(248,151,29,0.77);
+    float: right;
+    height: 34px;
+    margin-top: -34px;
+    padding-left: 19px;
+    top: 34px;
+    right: -2px;
+    position: absolute;
+    border-radius: 0px 20px 16px 0px;
+    width: 10%;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: table-cell;
+    background: #30373e;
+    font-weight: 400;
+    font-size:14px;
+    line-height: 1;
+    color: #bbb;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid #8f8f8f;
+    z-index:0;
+    box-sizing: border-box;
+    &:before{
+            content: "\f104";
+            font-family: 'Ionicons';
+            font-size: 16px;
+            left: -10px;
+            position: relative;
+            top: 25%;
         }
+    &:hover {
+        border-color:rgba(248,151,29,0.77);
+        border-left-color:rgba(248,151,29,0.77);
+    }
 }
 
 .customDropdown .dropdown-menu{
@@ -164,7 +159,17 @@
     margin-top: 26px;
 }
 
-/* DropDown Components */
+.validation-failed-border button, .validation-failed-border .captorDropdownSingleSelect span.caret{
+    border: 2px solid #c04b59;
+}
+
+/* DropDown Display Components */
 .dropdownComponents{
     width: 30%;
 }
+
+
+/* Captor Tiny MCE */
+// .captorTinyMce{
+//     background-color: red;
+// }

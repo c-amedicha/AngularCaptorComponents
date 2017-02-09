@@ -8,17 +8,13 @@
   border: 2px solid #BF7416;
   padding: 20px; }
 
-.custom-popover-class {
-  background-color: #AE4551;
-  border-color: #c04b59;
-  border-radius: 5px;
-  color: #fff; }
+.borderComponents:before,
+.borderComponents:after {
+  content: '';
+  display: table; }
 
-.popover-content {
-  padding: 0px 5px; }
-
-.popover.top > .arrow:after {
-  border-top-color: #c04b59; }
+.borderComponents:after {
+  clear: both; }
 
 .validation-failed-label {
   color: #c04b59; }
@@ -33,6 +29,7 @@
   left: 6px;
   font-size: 14px; }
 
+/* Captor form components  */
 .captorComponents {
   width: 50%;
   margin: auto; }
@@ -139,8 +136,13 @@
 .customDropdown .dropdown-menu .dropdown-header {
   margin-top: 26px; }
 
-/* DropDown Components */
+.validation-failed-border button, .validation-failed-border .captorDropdownSingleSelect span.caret {
+  border: 2px solid #c04b59; }
+
+/* DropDown Display Components */
 .dropdownComponents {
   width: 30%; }
+
+/* Captor Tiny MCE */
 
 /*# sourceMappingURL=style.css.map */

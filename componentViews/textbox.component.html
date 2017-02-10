@@ -1,7 +1,7 @@
 <input-group ng-class="{ 'has-error' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }">
     <ng-form name="{{vm.name}}Form" novalidate>
         <label-area>
-            <label for="{{vm.name}}" class="control-label " ng-class="{ 'validation-failed-label' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }"> 
+            <label for="{{vm.name}}" class="control-label" ng-class="{ 'validation-failed-label' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }"> 
                 {{vm.label}}
                 <span ng-show=" vm.requiredVal ">*</span>
                 </label>

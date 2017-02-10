@@ -2,10 +2,10 @@
     <form name="form4" novalidate  ng-controller="tinyMCEControls as ctrl">
         <captor-tinymce name="tinyMCE1" 
                         label="Tiny MCE Component" 
-                        placeholder="Enter text here" 
                         is-required="true" 
                         value="ctrl.tinyText"
-                        char-count="3000">
+                        maxchar-count="20"
+                        is-required="true">
         </captor-tinymce>
         <div>
             <button class="btn btn-default btn-waypoint btn-icon btn-save btn-go-forward pull-right" 

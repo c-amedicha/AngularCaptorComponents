@@ -1,31 +1,32 @@
-<input-group>
+<input-group ng-class="{ 'has-error' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }">
     <ng-form name="{{vm.name}}Form" novalidate>
     <div class="form-group input-controls">
         <label-area>
-            <label for="{{vm.name}}" class="control-label"> 
+            <label for="{{vm.name}}" class="control-label" ng-class="{ 'validation-failed-label' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }"> 
                 {{vm.label}}
                 <span ng-show=" vm.requiredVal ">*</span>
                 </label>
         </label-area>
-        <div class="captorNGFormInput">
+        <div class="captorNGFormInput" ng-class="{ 'captorTinyMceError' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted}">
              <div class="row">
                 <div class="col-sm-12">
-                    <div id="tinymceWrapper">
                         <textarea 
-                            type="textarea" 
                             name="{{vm.name}}"
-                            id="{{vm.name}}"
                             class="form-control"
                             ng-model="vm.value"
                             ui-tinymce="vm.tinymceOptions"
+                            ng-required="vm.requiredVal"
                         >
                         </textarea>
-                        <span class="small text-right counter">{{vm.charCount}} of {{vm.charCount}} characters remaining</span>
-                    </div>
+                        <span class="small text-right counter" 
+                                ng-class="{'captorTinyMceTextWarning' : vm.rem_Count <= 25,
+                                            'captorTinyMceTextDanger' : vm.rem_Count <= 5 }">
+                                {{vm.rem_Count}} of {{vm.maxcharCount}} characters remaining
+                        </span>
                 </div>
             </div>
-            <error-message ng-show="vm.validationError && {{vm.name}}Form.$$parentForm.$submitted">-->
-                    <span class="captorValidationErrorMsg" > {{vm.validationError}}</span>
+            <error-message class="captorValidationErrorMsgTinyMce" ng-show="{{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted">
+                    <span> {{vm.validationError}}</span>
             </error-message>
         </div>
     </div>

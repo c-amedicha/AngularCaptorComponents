@@ -27,12 +27,17 @@
 .captorNGFormInput{
     position: relative;
 }
-.captorValidationErrorMsg{
+.captorValidationErrorMsg,.captorValidationErrorMsgTinyMce{
     color: #c04b59;
     position: absolute;
     top: 34px;
     left: 6px;
     font-size: 14px;
+}
+
+.captorValidationErrorMsgTinyMce{
+    position: relative;
+    top: -23px;
 }
 
 /* Captor form components  */
@@ -170,6 +175,13 @@
 
 
 /* Captor Tiny MCE */
-// .captorTinyMce{
-//     background-color: red;
-// }
+.captorTinyMceError .mce-tinymce.mce-container.mce-panel{
+    border: 2px solid #c04b59 !important;
+}
+
+.captorTinyMceTextWarning{
+    color: #F8971D;
+}
+.captorTinyMceTextDanger{
+    color: #AB2B3B;
+}

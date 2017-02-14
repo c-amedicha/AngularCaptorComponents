@@ -88,6 +88,7 @@ angular.module('captorAngularElements')
                             } else if ( self.char_Count > parseInt(self.maxcharCount)) {
                                 var spCount = self.getCountWithoutSpaces(editor.getBody().textContent, parseInt(self.maxcharCount));
                                 self.value=(editor.getBody().textContent);
+                                console.log(parseInt(self.maxcharCount) + spCount);
                                 self.value=(self.value).slice(0, parseInt(self.maxcharCount) + spCount);
                                 editor.setContent(self.value);
                             }
@@ -147,7 +148,12 @@ angular.module('captorAngularElements')
 
         self.getCountWithoutSpaces = function(str, maxLen){
             var spCount = 0;
-            spCount = str.split(' ').length-1;
+            console.log(str);
+            var nonWhiteSpaceRegExp = /\S/g;
+            if(str !== null || str !== undefined){
+                spCount = (str).replace(nonWhiteSpaceRegExp,'').length;
+            }
+            console.log(spCount);
             return spCount;
         }
 

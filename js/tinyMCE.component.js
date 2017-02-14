@@ -72,18 +72,24 @@ angular.module('captorAngularElements')
                             self.rem_Count =  parseInt(self.maxcharCount) - self.char_Count;
                             
                             if(self.char_Count == parseInt(self.maxcharCount)){
-                                if ((key != 8) && (key != 46) && (key != 37) && (key != 38) && (key != 39) && (key != 40)) { //for backspace, delete, and arrow keys
-                                   
-                                    e.stopPropagation();
-                                    e.preventDefault();
-                                    
+                                if ((key != 8) && (key != 46) && (key != 37) && (key != 38) && (key != 39) && (key != 40) && (key != 17)) { //for backspace, delete, ctrlKey and arrow keys
+                                    var ctrlDown =  false;
+                                    if(key != 17){
+                                        ctrlDown = true;
+                                    }
+                                    if(ctrlDown && ((key == 67) || (key == 88))){
+                                        //Allow Ctrl+c (Copy) and Ctrl+x (Cut) Shortcuts
+                                    }else{
+                                        e.stopPropagation();
+                                        e.preventDefault();
+                                    }
                                 }
                                
                             } else if ( self.char_Count > parseInt(self.maxcharCount)) {
                                 var spCount = self.getCountWithoutSpaces(editor.getBody().textContent, parseInt(self.maxcharCount));
-                            self.value=(editor.getBody().textContent).trim();
-                            self.value=(self.value).slice(0, parseInt(self.maxcharCount) + spCount);
-                            editor.setContent(self.value);
+                                self.value=(editor.getBody().textContent);
+                                self.value=(self.value).slice(0, parseInt(self.maxcharCount) + spCount);
+                                editor.setContent(self.value);
                             }
                         self.validateCaptorForm(self.value);
                     }
@@ -127,29 +133,26 @@ angular.module('captorAngularElements')
             this.parent.$setValidity('tinyMce', true);
             return true;
         }
+
         self.getCharCount = function(str){
             var charCount = 0;
             var whiteSpaceRegExp = /\s/g;
+
             if(str !== null || str !== undefined){
                 charCount = (str).replace(whiteSpaceRegExp,'').length;
             }
-
+            
             return charCount;
         };
 
         self.getCountWithoutSpaces = function(str, maxLen){
             var spCount = 0;
-            spCount = str.substring(0,maxLen).split(' ').length-1;
+            spCount = str.split(' ').length-1;
             return spCount;
-
         }
 
         self.onChange = function(e){
-            // var whiteSpaceRegExp = /^\s+|\s+$/g, spChar = /^&nbsp;+|&nbsp;+$/g;
-            // self.value = (self.value).replace(whiteSpaceRegExp,'');
-            // self.value = (self.value).replace(spChar,'');
             self.validateCaptorForm(self.value);
-           
         };
        
         

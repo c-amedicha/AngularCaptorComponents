@@ -24,7 +24,19 @@ angular.module("captorAngularElements")
         }
     })
     .controller('tinyMCEControls',function($scope){
-        
+        var self = this;
+        self.tinyText = "";
+        self.save = function(myForm) {
+            if (!myForm.$valid) {
+                $scope.formvalid = false;
+                myForm.$setSubmitted();
+                return;
+            } else {
+                var displayValues = "The Submitted values are : ";
+                displayValues += "\n -->" + self.tinyText;
+                alert(displayValues);
+            }
+        }
     })
     .controller('dropdownControls', function($scope){
 

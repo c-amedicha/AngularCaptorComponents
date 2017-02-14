@@ -32,8 +32,10 @@ function InputTextComponent() {
         if (!this.maximumLength) {
             this.maximumLength = 200;
         }
-        if (this.isRequired) {
-            this.requiredVal = this.isRequired;
+        if (this.isRequired == "true") {
+            this.requiredVal = true;
+        }else{
+            this.requiredVal = false;
         }
 
         if (this.type == "email") {
@@ -76,7 +78,7 @@ function InputTextComponent() {
         } catch (e) {
             this.value = '';
         }
-        this.validateCaptorForm()
+        this.validateCaptorForm();
     };
     this.validateCaptorForm = function() {
         this.validationError = '';

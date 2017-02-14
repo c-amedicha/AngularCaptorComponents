@@ -17,7 +17,7 @@ angular.module('ui.tinymce', [])
         if (!$window.tinymce) {
           return;
         }
-
+        
         var ngModel = ctrls[0],
           form = ctrls[1] || null;
 

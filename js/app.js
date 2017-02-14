@@ -1,4 +1,4 @@
-angular.module('captorAngularElements', ['angularjs-dropdown-multiselect', 'ui.bootstrap', 'ui.mask','ui.router','ui.tinymce'])
+angular.module('captorAngularElements', ['ngSanitize','angularjs-dropdown-multiselect', 'ui.bootstrap', 'ui.mask','ui.router','ui.tinymce'])
 .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('/basicTextControls');
             $stateProvider

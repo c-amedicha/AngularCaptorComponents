@@ -11,25 +11,34 @@ angular.module('captorAngularElements')
             name: "@",
             value: "=",
             isRequired: "@",
-            maxcharCount: "@"
+            maxcharCount: "@",
+            disabledBlock:"@"
         }
     });
 
-    function tinymceComponent($timeout){
+    function tinymceComponent($timeout,$scope){
         "use strict"
         var self = this;
+        var ctrlDown = false,
+        ctrlKey = 17,
+        cmdKey = 91,
+        vKey = 86,
+        cKey = 67;
         self.$onInit = function() {
             self.rem_Count = 0,
             self.char_Count= 0;
+            self.minimumLength = 5;
 
-            if (self.isRequired) {
-                self.requiredVal = self.isRequired;
+            if (self.isRequired == "true") {
+                self.requiredVal = true;
+            }else{
+                self.requiredVal = false;
             }
 
             self.tinymceOptions = {
                 theme: "modern",
                 skin: 'captor',
-                plugins: 'wordcount link powerpaste autoresize autolink',
+                plugins: ((self.disabledBlock == "true") ? 'autoresize link autolink' : 'wordcount link powerpaste autoresize autolink'),
                 default_link_target: "_blank",
                 extended_valid_elements : "a[href|target=_blank]",
                 oninit: "setPlainText",
@@ -43,8 +52,10 @@ angular.module('captorAngularElements')
                 wordcount_cleanregex: /[0-9.(),;:!?%#$?\x27\x22_+=\\/\-]*/g,
                 browser_spellcheck: true,
                 menubar: false,
-                toolbar: "bold italic underline link",
-                default_link_target: "_blank",
+                inline: false,
+                forced_root_block : false,
+                readonly: ((self.disabledBlock == "true") ? true : false),
+                toolbar: ((self.disabledBlock == "true") ? 'false' : "bold italic underline link"),
                 link_assume_external_targets: true,
                 style_formats: [
                     { title: 'Bold text', inline: 'b' },
@@ -55,46 +66,70 @@ angular.module('captorAngularElements')
                 ],
                 link_class_list: [{ title: 'Hyperlink', value: 'tinymce-hyperlink' }],
                 init_instance_callback: function (editor) {
-                    editor.on('KeyUp KeyDown LoadContent KeyPress Change NodeChange MouseOver', function (e) {
+                    var textContentTrigger = function(e){
                         var key = e.keyCode;
-                        var trimCount = 0;
-                        if ((key == 8) || (key == 46) || (key == 88) || (key == 67)) {
-
-                        }else{
                             self.char_Count = self.getCharCount(editor.getBody().textContent);
-                            self.rem_Count =  self.maxcharCount - self.char_Count;
+                            self.rem_Count =  parseInt(self.maxcharCount) - self.char_Count;
                             
-                            if ( self.char_Count > self.maxcharCount) {
-
-                                var spCount = self.getCountWithoutSpaces(editor.getBody().textContent, self.maxcharCount);
-                               // self.value = self.value.slice(0, self.maxcharCount + spCount);
-                               self.value=editor.getBody().textContent;
-                               self.value=(self.value).substring(0, parseInt(self.maxcharCount) + spCount);
-                                e.stopPropagation();
-                                e.preventDefault();
-                            }else{
-                                trimCount = self.trimCount;
+                            if(self.char_Count == parseInt(self.maxcharCount)){
+                                if ((key != 8) && (key != 46) && (key != 37) && (key != 38) && (key != 39) && (key != 40)) { //for backspace, delete, and arrow keys
+                                   
+                                    e.stopPropagation();
+                                    e.preventDefault();
+                                    
+                                }
+                               
+                            } else if ( self.char_Count > parseInt(self.maxcharCount)) {
+                                var spCount = self.getCountWithoutSpaces(editor.getBody().textContent, parseInt(self.maxcharCount));
+                            self.value=(editor.getBody().textContent).trim();
+                            self.value=(self.value).slice(0, parseInt(self.maxcharCount) + spCount);
+                            editor.setContent(self.value);
                             }
-                        }
-                         
-                    });
-                }
-            };
+                        self.validateCaptorForm(self.value);
+                    }
 
-            self.validateCaptorForm();
+                    editor.on('KeyUp KeyDown KeyPress LoadContent Change NodeChange Paste', function(e) {
+                        textContentTrigger(e);
+                    });
+                    // editor.on('SetContent', function(e) {
+                    //     if(!e.initial)
+                    //     {
+                    //         // editor.save();
+                    //         textContentTrigger(e);
+                    //     }
+
+                    // });
+            }
+        };
+
+            self.validateCaptorForm(self.value);
         }
 
-        self.validateCaptorForm = function() {
+        self.validateCaptorForm = function(editorValue) {
             self.validationError = '';
-            if (self.requiredVal && !self.value) {
-                self.validationError = "This is a required field ";
+             var whiteSpaceRegExp = /\s/g, 
+                    spChar = /&nbsp;/g;
+           
+            editorValue = (editorValue).replace(spChar,'');
+            editorValue = editorValue.replace(whiteSpaceRegExp,'');
+
+            if (self.requiredVal && editorValue.length == 0) {
+                this.validationError = "This is a required field ";
+                this.parent.$setValidity('tinyMce', false);
                 return false;
             }
+            if (editorValue.length > 0 && editorValue.length < self.minimumLength) {
+                self.validationError = "Minimum " + self.minimumLength + " characters are required";
+                this.parent.$setValidity('tinyMce', false);
+                return false;
+            }
+            this.validationError = '';
+            this.parent.$setValidity('tinyMce', true);
+            return true;
         }
         self.getCharCount = function(str){
             var charCount = 0;
             var whiteSpaceRegExp = /\s/g;
-
             if(str !== null || str !== undefined){
                 charCount = (str).replace(whiteSpaceRegExp,'').length;
             }
@@ -108,4 +143,14 @@ angular.module('captorAngularElements')
             return spCount;
 
         }
+
+        self.onChange = function(e){
+            // var whiteSpaceRegExp = /^\s+|\s+$/g, spChar = /^&nbsp;+|&nbsp;+$/g;
+            // self.value = (self.value).replace(whiteSpaceRegExp,'');
+            // self.value = (self.value).replace(spChar,'');
+            self.validateCaptorForm(self.value);
+           
+        };
+       
+        
     };

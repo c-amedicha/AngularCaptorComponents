@@ -21,7 +21,7 @@
     </div>
     <div class="captorComponents col-xs-6">
         <form name="form1" novalidate ng-controller="homectrl as ctrl" >
-            <captor-input-text label="Password" placeholder="Enter password" type="password" name="password" value= "ctrl.values.password">
+            <captor-input-text label="Password" placeholder="Enter password" type="password" name="password" value= "ctrl.values.password" is-required="true">
             </captor-input-text>
             <captor-input-text label="Confirm Password" placeholder="Enter password" type="password" name="password" value= "ctrl.values.confirmPassword">
             </captor-input-text>
@@ -29,6 +29,7 @@
             </captor-input-text>
             <captor-input-text label="ReadOnly Phone" placeholder="Enter Phone" type="phone" name="phone2" minimum-length="3" maximum-length="25" hide-display= "true" value= "ctrl.values.phone2">
             </captor-input-text>
+            <!--<captor-savebutton label="test save" form-name="form1" form-valid="form1.$valid"></captor-savebutton>-->
             <div>
                 <button class="btn btn-default btn-waypoint btn-icon btn-save btn-go-forward pull-right" ng-class="{ 'captorFormDisabled'  : form1.$invalid , 'captorFormEnabled': form1.$valid }" ng-click="ctrl.save(form1)">
                     <span>Save</span>

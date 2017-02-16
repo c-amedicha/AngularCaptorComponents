@@ -15,9 +15,10 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.6.1",
-    "angular-animate": "^1.6.1",
+    "angular-animate": "^1.6.0",
     "angular-touch": "^1.6.1",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "ng-toast": "^2.0.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

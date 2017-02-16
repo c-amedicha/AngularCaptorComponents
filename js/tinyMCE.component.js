@@ -148,12 +148,10 @@ angular.module('captorAngularElements')
 
         self.getCountWithoutSpaces = function(str, maxLen){
             var spCount = 0;
-            console.log(str);
             var nonWhiteSpaceRegExp = /\S/g;
             if(str !== null || str !== undefined){
                 spCount = (str).replace(nonWhiteSpaceRegExp,'').length;
             }
-            console.log(spCount);
             return spCount;
         }
 

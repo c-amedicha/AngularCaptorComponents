@@ -1,4 +1,4 @@
-angular.module('captorAngularElements', ['ngSanitize','angularjs-dropdown-multiselect', 'ui.bootstrap', 'ui.mask','ui.router','ui.tinymce'])
+angular.module('captorAngularElements', ['ngAnimate', 'toastr','ngSanitize','angularjs-dropdown-multiselect', 'ui.bootstrap', 'ui.mask','ui.router','ui.tinymce'])
 .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('/basicTextControls');
             $stateProvider
@@ -16,4 +16,9 @@ angular.module('captorAngularElements', ['ngSanitize','angularjs-dropdown-multis
                     templateUrl: './views/tinyMCEControls.html',
                     controller: 'tinyMCEControls'
             });
+        //     .state('basicFormControls',{
+        //             url: '/basicFormControls',
+        //             templateUrl: './views/basicFormControls.html',
+        //             controller: 'basicFormControls'
+        //     });
 }]);

@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="./css/icomoon/css/icomoon.min.css">
     <link rel="stylesheet" href="./css/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="./node_modules/ui-select/dist/select.min.css">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/tinymce.min.css">
     <link rel="stylesheet" href="./css/main.min.css">
+    <link rel="stylesheet" href="./node_modules/angular-toastr/dist/angular-toastr.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>Input Components</title>
 </head>
@@ -33,7 +33,7 @@
                     <li role="menuitem" ui-sref-active="active" class="active"><a ui-sref="dropdownControls">Dropdown Controls</a></li>
                     <li role="menuitem" ui-sref-active="active" class="active"><a ui-sref="tinyMCEControls">TinyMCE Control</a></li>
                     <!--<li class="divider"></li>
-                    <li role="menuitem"><a href="#">Separated link</a></li>-->
+                    <li role="menuitem" ui-sref-active="active" class="active"><a ui-sref="basicFormControls">Basic Form Controls</a></li>-->
                 </ul>
             </div>
         </div>
@@ -41,12 +41,14 @@
             <div ui-view></div>
         </div>
     </div>
-    <script src="./node_modules/angular/angular.min.js"></script>
+    <script src="./bower_components/angular/angular.min.js"></script>
     <script src="./node_modules/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="./bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="./node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
     <script src="./node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
     <script src="./plugins/angularjs-dropdown-multiselect.min.js"></script>
     <script src="./node_modules/angular-ui-mask/dist/mask.js"></script>
+    <script src="./node_modules/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
     <script src="./plugins/angular-ui-router.min.js"></script>
     <script src="./bower_components/tinymce/tinymce.js"></script>
     <script src="./bower_components/angular-ui-tinymce/src/tinymce.js"></script>
@@ -54,6 +56,8 @@
     <script src="./js/inputText.component.js"></script>
     <script src="./js/inputDropdown.component.js"></script>
     <script src="./js/tinyMCE.component.js"></script>
+    <script src="./js/saveButton.component.js"></script>
+    <script src="./js/captorForm.component.js"></script>
     <script src="./js/homectrl.js"></script>
 </body>
 

@@ -16,9 +16,4 @@ angular.module('captorAngularElements', ['ngAnimate', 'toastr','ngSanitize','ang
                     templateUrl: './views/tinyMCEControls.html',
                     controller: 'tinyMCEControls'
             });
-        //     .state('basicFormControls',{
-        //             url: '/basicFormControls',
-        //             templateUrl: './views/basicFormControls.html',
-        //             controller: 'basicFormControls'
-        //     });
 }]);

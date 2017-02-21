@@ -14,7 +14,7 @@ angular.module('captorAngularElements')
         }
     });
 
-    function SaveButtonComponent(){
+    function SaveButtonComponent(toastr){
         "use strict"
         var self = this;
         self.parentForm = "";
@@ -31,7 +31,12 @@ angular.module('captorAngularElements')
                 console.log(self.parent);
                 return;
             } else {
-                alert("Form Submitted");
+                toastr.success('Form Submitted Successfully!!', {
+                    'timeOut': 3000,
+                    'progressBar': false,
+                    'position-class': 'toast-top-right',
+                    'target': 'body'
+                });
             }
         }
     };

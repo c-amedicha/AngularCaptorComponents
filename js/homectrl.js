@@ -1,5 +1,34 @@
-angular.module("captorAngularElements")
-    .controller("homectrl", function ($scope, toastr) {
+var myApp = angular.module("captorAngularDisplay",['captorAngularElements','toastr','ui.router', 'ui.bootstrap']);
+    myApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+                $urlRouterProvider.otherwise('/basicTextControls');
+                $stateProvider
+                .state('basicTextControls', {
+                        url: '/basicTextControls',
+                        templateUrl: './views/basicTextControls.html'
+                })
+                .state('dropdownControls', {
+                        url: '/dropdownControls',
+                        templateUrl: './views/dropdownControls.html',
+                        controller: 'dropdownControls'
+                })
+                .state('tinyMCEControls',{
+                        url: '/tinyMCEControls',
+                        templateUrl: './views/tinyMCEControls.html',
+                        controller: 'tinyMCEControls'
+                })
+                .state('datepickerControls',{
+                    url: '/datetimeControls',
+                    templateUrl: './views/datepickerControls.html',
+                    controller: 'datepickerControls' 
+                })
+                .state('otherControls',{
+                    url: '/otherControls',
+                    templateUrl:'./views/otherControls.html',
+                    controller: 'otherCtrls'
+                });
+    }]);
+
+    myApp.controller("homectrl", function ($scope, toastr) {
 
         var self = this;
         this.abc = "abc";
@@ -8,25 +37,6 @@ angular.module("captorAngularElements")
         this.values = {};
         this.values.ssn2 = "111444656";
         this.values.phone2 = "5556669879";
-
-        this.save = function (myForm) {
-            if (!myForm.$valid) {
-                $scope.formvalid = false;
-                myForm.$setSubmitted();
-                return;
-            } else {
-                // var displayValues = "The Submitted values are : ";
-                // for(value in this.values){
-                //     displayValues += "\n -->" + value + " : " + this.values[value];
-                // }
-                toastr.success('Form Submitted Successfully!!', {
-                    'timeOut': 3000,
-                    'progressBar': false,
-                    'position-class': 'toast-top-right',
-                    'target': 'body'
-                });
-            }
-        }
     })
     .controller('tinyMCEControls', function ($scope, toastr) {
         var self = this;
@@ -39,18 +49,10 @@ angular.module("captorAngularElements")
             } else {
                 // var displayValues = "The Submitted values are : ";
                 // displayValues += "\n -->" + self.tinyText;
-                toastr.success('Form Submitted Successfully!!', {
-                    'timeOut': 3000,
-                    'progressBar': false,
-                    'position-class': 'toast-top-right',
-                    'target': 'body'
-                });
             }
         }
     })
     .controller('dropdownControls', function ($scope, toastr) {
-
-        $scope.selected = undefined;
         this.example = [{
             "Value": "SBLDNONE",
             "Description": "None"
@@ -480,78 +482,17 @@ angular.module("captorAngularElements")
         }];
 
         var self = this;
-        self.save = function (myForm) {
-            if (!myForm.$valid) {
-                $scope.formvalid = false;
-                myForm.$setSubmitted();
-                return;
-            } else {
-                // var displayValues = "The Submitted values are : ";
-                // for(value in self.selected){
-                //     displayValues += "\n -->" + "Value" + " : " + self.selected[value].Value + "\n\t Desctiption :" + self.selected[value].Description;
-                // }
-                toastr.success('Form Submitted Successfully!!', {
-                    'timeOut': 3000,
-                    'progressBar': false,
-                    'position-class': 'toast-top-right',
-                    'target': 'body'
-                });
-            }
-        }
-
     })
-    .controller('basicFormControls', function () {
+
+.controller('datepickerControls',function($scope){
+    
         var self = this;
-        self.formArray = [
-            {
-                elementType: "captor-input-text",
-                type: "text",
-                label: "First Name",
-                placeholder: "Enter First Name",
-                name: "firstName",
-                minimumLength: "3",
-                maximumLength: "5",
-                isRequired: "true",
-                value: "values.firstName"
-        },
-            {
-                elementType: "captor-input-text",
-                type: "email",
-                label: "Email",
-                placeholder: "Enter Email",
-                name: "email",
-                value: "values.email"
-        },
-            {
-                elementType: "captor-input-text",
-                type: "ssn",
-                label: "SSN",
-                placeholder: "Enter Email",
-                name: "email",
-                value: "values.email"
-        },
-            {
-                elementType: "captor-input-text",
-                type: "phone",
-                label: "Phone",
-                placeholder: "Enter Email",
-                name: "email",
-                value: "values.email"
-        },
-            {
-                elementType: "captor-input-text",
-                type: "password",
-                label: "Password",
-                placeholder: "Enter Email",
-                name: "email",
-                value: "values.email"
-        },
-            {
-                elementType: "captor-input-text",
-                type: "tinymce",
-                label: "Email",
-                placeholder: "Enter Email",
-                name: "email",
-                value: "values.email"
-        }];
-    });
+        this.selected = null;
+        this.selected2 = null;
+        this.minDate = '02/10/2017';
+        this.maxDate = '02/20/2017';
+        this.todayDate = '03/01/2017';
+})
+.controller('otherCtrls',function($scope){
+    this.radioVal = true;
+});

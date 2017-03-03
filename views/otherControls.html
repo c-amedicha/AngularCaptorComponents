@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="captorComponents col-xs-6">
+        <form name="form2" novalidate ng-controller="otherCtrls as ctrl" >
+            <captor-radiobutton label="Radio Button" name="radio1" value="ctrl.radioVal"></captor-radiobutton>
+            <h6>{{ctrl.radioVal}}</h6>
+            <captor-savebutton formName="form2" label="Save Values" form-valid="form2.$valid"></captor-savebutton>
+        </form>
+    </div>
+</div>

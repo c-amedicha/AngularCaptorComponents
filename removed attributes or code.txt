@@ -195,3 +195,23 @@ removed code Angular components :
 		.popover.top>.arrow:after {
    			 border-top-color: #c04b59;
 		}
+
+
+
+
+
+
+9.                  <!--<input type="text" 
+                        class="form-control" 
+                        name="{{vm.name}}"
+                        label="{{vm.label}}"
+                        placeholder="{{vm.placeholder}}"
+                        uib-datepicker-popup="{{vm.dateFormat}}"
+                        ng-model="vm.value" 
+                        is-open="vm.openDatepicker" 
+                        datepicker-options="vm.dateOptions" 
+                        ng-required="vm.requiredVal"
+                        show-button-bar="false"
+                        ng-click="vm.openPicker()"
+                        ng-change="vm.onChange()"
+                        autocomplete="off"  />-->

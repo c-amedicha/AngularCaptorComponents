@@ -1,0 +1,21 @@
+<div class="dateTimePickerSandbox">
+    <form name="form5" novalidate ng-controller="datepickerControls as ctrl">
+        <div class="div1">
+        <captor-datepicker name="datepicker1" label="DatePicker With Time" placeholder="Select Date" is-required="true" value="ctrl.selected" 
+                            date-format="MM/dd/yyyy" min-date="{{ctrl.minDate}}" max-date="{{ctrl.maxDate}}" hide-time="false"></captor-datepicker>
+        <br><br>
+        <captor-datepicker name="datepicker2" label="DatePicker Without Time" placeholder="Select Date" is-required="true" value="ctrl.selected2" 
+                            date-format="MM/dd/yyyy"  hide-time="true"></captor-datepicker>
+        <br><br>
+        <captor-datepicker name="datepicker3" label="DatePicker - No Future Dates" placeholder="Select Date" is-required="true" value="ctrl.selected3" 
+                            date-format="MM/dd/yyyy" max-date="{{ctrl.todayDate}}" hide-time="false"></captor-datepicker>
+        <br><br>
+        <captor-datepicker name="datepicker4" label="DatePicker - No Past Dates" placeholder="Select Date" is-required="true" value="ctrl.selected4" 
+                            date-format="MM/dd/yyyy" min-date="{{ctrl.todayDate}}" hide-time="false"></captor-datepicker>
+        <br><br>
+
+        </div>
+
+        <captor-savebutton formName="form5" label="Save Dropdown" form-valid="form5.$valid"></captor-savebutton>
+    </form>
+</div>

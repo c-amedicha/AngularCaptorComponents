@@ -1,4 +1,7 @@
-/* Display Page */
+@import "captor-color-theme";
+
+
+/******************************************* Display Page *******************************************/
 .demoPanel{
     width: 80%;
     padding: 20px;
@@ -6,29 +9,39 @@
 }
 
 .borderComponents{
-    border: 2px solid #BF7416;
+    border: 2px solid $ochre;
     padding: 20px;
-}
-
-// For clearing floats
-.borderComponents:before,
-.borderComponents:after {
-	content: '';
-	display: table;
-}
-.borderComponents:after {
-	clear: both;
+    &:before,&:after{
+        content: '';
+	    display: table;
+    }
+    &:after{
+        clear: both;
+    }
 }
 
 .validation-failed-label {
-    color: #c04b59;
+    color: $mandy;
 }
 
 .captorNGFormInput{
     position: relative;
+    .datePickerSpan{
+        position: absolute;
+        left: 173px;
+        top: 0px;
+        height: 34px;
+        width: 34px;
+        &:before{
+            position: absolute;
+            left: 8px;
+            top: 5px;
+        }
+    }
 }
+
 .captorValidationErrorMsg,.captorValidationErrorMsgTinyMce{
-    color: #c04b59;
+    color: $mandy;
     position: absolute;
     top: 34px;
     left: 6px;
@@ -39,20 +52,18 @@
     position: relative;
     top: -23px;
 }
-
-/* Captor form components  */
+ 
+/******************************************* Captor form components  *******************************************/
 .captorComponents {
     width: 50%;
     margin: auto;
+    label{
+        margin-top: 10px;
+    }
+    .form-control{
+        margin-bottom: 15px;
+    }
 } 
-
-.captorComponents .form-control {
-    margin-bottom: 15px;
-}
-
-.captorComponents label{
-    margin-top: 10px;
-}
 
 .captorFormDisabled{
     cursor: not-allowed; 
@@ -62,131 +73,341 @@
     cursor: pointer; 
 }
 
-/* Dropdown Component */
+
+.dateTimePickerSandbox {
+    .div1{
+        display: inline-block;
+        width: 70%;
+    }
+}
+/******************************************* Dropdown Component *******************************************/
 .customDropdown{
     width: 100%;
     text-align: left;
     position: relative;
+    & button{
+        width: 25em;
+        text-align: left;
+        overflow: hidden;
+    }
+    & .dropdown-menu{
+        width: 25em;
+        max-height: 198px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-box-shadow: 0 3px 8px $black;
+        -moz-box-shadows: 0 3px 8px $black;
+        -ms-box-shadow: 0 3px 8px $black;
+        box-shadow: 0 3px 8px $black;
+        z-index: 9999 !important;
+        border: none;
+        border-radius: 5px;
+        & li{
+            border-bottom: 1px solid $matterhorn;
+            &>a{
+                font-family: Verdana,Arial,sans-serif;
+                font-size: 11px;
+                font-weight: 400;
+                padding: 2px 5px;
+                color: $silver;
+            }
+            &>a:hover, &>a:focus {
+                background-color: $baltic-sea;
+            }
+        }
+        
+        & li.divider{
+            display: none;
+        }
+        & .dropdown-header{
+            margin-top: 0px;
+        }
+    }
+}
+
+.customDropdownMultiSelect{
+    @extend .customDropdown;
+    & .dropdown-menu{
+        & li:first-child{
+            display: inline-block;
+            float: left;
+            padding-left: 5px;
+        }
+        & li:nth-child(2){
+            display: inline-block;
+            float: right;
+            padding-right: 5px;
+        }
+        & .dropdown-header{
+            margin-top: 26px;
+        }
+
+    }
 }
 
 .captorDropdownSingleSelect{
     width: 100%;
-}
-
-.customDropdown button{
-    width: 25em;
-    text-align: left;
-    overflow: hidden;
-}
-
-.captorDropdownSingleSelect span.caret{
-    float: right;
-    height: 34px;
-    margin-top: -34px;
-    padding-left: 19px;
-    top: 34px;
-    right: -2px;
-    position: absolute;
-    border-radius: 0px 20px 16px 0px;
-    width: 10%;
-    white-space: nowrap;
-    vertical-align: middle;
-    display: table-cell;
-    background: #30373e;
-    font-weight: 400;
-    font-size:14px;
-    line-height: 1;
-    color: #bbb;
-    text-align: center;
-    cursor: pointer;
-    border: 2px solid #8f8f8f;
-    z-index:0;
-    box-sizing: border-box;
-    &:before{
-            content: "\f104";
-            font-family: 'Ionicons';
-            font-size: 16px;
-            left: -10px;
-            position: relative;
-            top: 25%;
+    & span.caret{
+        float: right;
+        height: 34px;
+        margin-top: -34px;
+        padding-left: 19px;
+        top: 34px;
+        right: -2px;
+        position: absolute;
+        border-radius: 0px 20px 16px 0px;
+        width: 10%;
+        white-space: nowrap;
+        vertical-align: middle;
+        display: table-cell;
+        background: $baltic-sea;
+        font-weight: 400;
+        font-size:14px;
+        line-height: 1;
+        color: $silver;
+        text-align: center;
+        cursor: pointer;
+        border: 2px solid $suva-grey;
+        z-index:0;
+        box-sizing: border-box;
+        &:before{
+                content: "\f104";
+                font-family: 'Ionicons';
+                font-size: 16px;
+                left: -10px;
+                position: relative;
+                top: 25%;
+            }
+        &:hover {
+            border-color:$carrot-orange;
+            border-left-color:$carrot-orange;
         }
-    &:hover {
-        border-color:rgba(248,151,29,0.77);
-        border-left-color:rgba(248,151,29,0.77);
     }
 }
 
-.customDropdown .dropdown-menu{
-    width: 25em;
-    max-height: 198px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-box-shadow: 0 3px 8px #000;
-    -moz-box-shadows: 0 3px 8px #000;
-    -ms-box-shadow: 0 3px 8px #000;
-    box-shadow: 0 3px 8px #000;
-    z-index: 9999 !important;
-    border: none;
-    border-radius: 5px;
+.validation-failed-border{
+    button, .captorDropdownSingleSelect span.caret{
+        border: 2px solid $mandy;
+    }
 }
 
-.customDropdown .dropdown-menu li{
-    border-bottom: 1px solid #555;
-}
-.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus{
-    background-color: #30373e;
-}
-
-.customDropdown .dropdown-menu>li>a{
-    font-family: Verdana,Arial,sans-serif;
-    font-size: 0.85em;
-    font-weight: 400;
-    padding: 2px 5px;
-    color: #bbb;
-}
-.customDropdown .dropdown-menu li:first-child{
-    display: inline-block;
-    float: left;
-    padding-left: 5px;
-    
-}
-.customDropdown .dropdown-menu li:nth-child(2){
-    display: inline-block;
-    float: right;
-    padding-right: 5px;
-}
-
-.customDropdown .dropdown-menu li.divider{
-    display: none;
-}
-
-.customDropdown .dropdown-menu .dropdown-header{
-    margin-top: 26px;
-}
-
-.validation-failed-border button, .validation-failed-border .captorDropdownSingleSelect span.caret{
-    border: 2px solid #c04b59;
-}
-
-/* DropDown Display Components */
+/****************************************** DropDown Display Components ******************************************/
 .dropdownComponents{
     width: 30%;
 }
 
-
-/* Captor Tiny MCE */
-.captorTinyMceError .mce-tinymce.mce-container.mce-panel{
-    border: 2px solid #c04b59 !important;
+/****************************************** Captor Tiny MCE ******************************************/
+.captorTinyMceError {
+    .mce-tinymce.mce-container.mce-panel{
+        border: 2px solid $mandy !important;
+    }
 }
 
 .captorTinyMceTextWarning{
-    color: #F8971D;
+    color: $carrot-orange;
 }
 .captorTinyMceTextDanger{
-    color: #AB2B3B;
+    color: $guardsman-red;
 }
 
+/****************************************** Toastr Notifications **********************************************/
 .toast-pink{
     background-color: #51A351;;
 }
 
+/****************************************** Date Time Picker **********************************************/
+.uib-datepicker-popup{
+    background-color: $nero;
+    button{
+        background-color: $nero;
+        border:none;
+    }
+    table{
+        font-size: .9em;
+        border-collapse: collapse;
+        thead{
+            th{
+                button{
+                    color: $carrot-orange;
+                    &:hover{
+                        background-color : $nero;
+                        border:none;
+                        color: $carrot-orange;
+                    }
+                }
+            }
+            tr{
+                small{
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    font-weight: 300;
+                    padding: .1em .3em;
+                    font-weight: 300;
+                    border: 0;
+                    color:$silver;
+                }
+            }
+        }
+        tbody{
+            border-top: 1px solid $carrot-orange;
+            tr{
+                button{
+                    border: 1px solid;
+                    background-color: $matterhorn;
+                    border-radius: 0px; 
+                    &:hover{
+                        background-color : $outer-space !important;
+                        outline: 0;
+                        border:none;
+                    }
+                }
+            }
+        }
+        button{
+            span{
+                display: block;
+                padding: .2em;
+                text-decoration: none;
+                &.text-info{
+                    color: $silver;
+                }
+            }
+            &.active{
+                span{
+                    &.text-info{
+                        color: $black-russian;
+                    }
+                }
+            }
+        }
+        .btn-default{
+            &.active{
+                color: $white;
+                background-color: $ochre;
+                border-color: $ochre;
+            }
+        }
+    }
+}
+
+.btn-default:active, .open>.dropdown-toggle.btn-default
+{
+    color: $white;
+    background-color: $ochre;
+    border-color: $ochre;
+}
+
+.text-muted {
+  color: transparent;
+  background: none;
+  display: none !important;
+  visibility: hidden;
+}
+
+.uib-button-bar{
+    border-top: 1px solid $carrot-orange;
+    .uib-datepicker-current{
+        &:hover{
+            background: $nero;
+        }
+    }
+    .uib-clear{
+        &:hover{
+            background: $nero;
+        }
+    }
+    .uib-close{
+        display: none;
+    }
+}
+
+.uib-daypicker{
+    padding: 5px;
+    outline: 0;
+    .btn{
+        &.btn-default{
+            margin-left: 0px;
+            background: $matterhorn;
+            font-weight: 400;
+            color: $silver;
+            border: none;
+            &:hover{
+                background-color: $baltic-sea !important;
+                transition: none;
+            }
+            &.uib-title{
+                background: none;
+                padding: 0px;
+                color: $orange;
+                font-family: Verdana,Arial,sans-serif;
+                pointer-events: none;
+                font-size: 12px;
+            }
+            &.uib-left,&.uib-right{
+                background: none;
+                padding: 0px;
+                width: 1.8em;
+                height: 1.8em;
+                font-size: 12px;
+                color: $orange;
+                font-weight: 200;
+            }
+        }
+    }
+}
+
+.uib-daypicker.uib-daypicker .btn.active{
+    background-color: $orange;
+    color:$black-russian;
+    text-align: right;
+}
+
+.uib-daypicker.uib-daypicker .btn.active:hover{
+    background-color: $orange !important;
+}
+
+.uib-weeks {
+    & .uib-day{
+        padding: 1px;
+    }
+}
+
+span.error-span{
+    border: 2px solid $mandy !important;
+    color:$mandy !important;
+}
+
+
+.uib-timepicker{
+    left: 210px;
+    position: absolute;
+    top: -30px;
+    .uib-increment,.uib-decrement{
+        span{
+            color: $carrot-orange;
+        }
+    }
+    input{
+        border-radius: 15px !important;
+    }
+    .uib-time{
+        button{
+            font-size: 0.9em;
+            text-align: center;
+            margin: 3pz;
+            padding: 4px;
+        }
+    }
+}
+
+
+/************************************Radio Button************************************/
+.header-toggle {
+    label{
+        color: $carrot-orange;
+        vertical-align: middle;
+        text-transform: uppercase;
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+    }
+}

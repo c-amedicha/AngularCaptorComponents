@@ -11,12 +11,7 @@
             </captor-input-text>
             <captor-input-text label="Input SSN" placeholder="Enter SSN" type="ssn" name="ssn" minimum-length="3" maximum-length="25" value= "ctrl.values.ssn">
             </captor-input-text>
-            <div>
-                <button class="btn btn-default btn-waypoint btn-icon btn-save btn-go-forward pull-right" ng-class="{ 'captorFormDisabled'  : form2.$invalid , 'captorFormEnabled': form2.$valid }" ng-click="ctrl.save(form2)">
-                    <span>Save</span>
-                    <span class="icon"></span>
-                </button>
-            </div>
+           <captor-savebutton formName="form2" label="Save Text Controls" form-valid="form2.$valid"></captor-savebutton>
         </form>
     </div>
     <div class="captorComponents col-xs-6">
@@ -29,13 +24,7 @@
             </captor-input-text>
             <captor-input-text label="ReadOnly Phone" placeholder="Enter Phone" type="phone" name="phone2" minimum-length="3" maximum-length="25" hide-display= "true" value= "ctrl.values.phone2">
             </captor-input-text>
-            <!--<captor-savebutton label="test save" form-name="form1" form-valid="form1.$valid"></captor-savebutton>-->
-            <div>
-                <button class="btn btn-default btn-waypoint btn-icon btn-save btn-go-forward pull-right" ng-class="{ 'captorFormDisabled'  : form1.$invalid , 'captorFormEnabled': form1.$valid }" ng-click="ctrl.save(form1)">
-                    <span>Save</span>
-                    <span class="icon"></span>
-                </button>
-            </div>
+            <captor-savebutton label="test save" form-name="form1" form-valid="form1.$valid"></captor-savebutton>
         </form>
     </div>
 </div>

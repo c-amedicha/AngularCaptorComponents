@@ -1,0 +1,29 @@
+<input-group class="header-toggle toggles m-t-20 text-right" ng-class="{ 'has-error' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }">
+    <ng-form name="{{vm.name}}Form" novalidate>
+        <label-area>
+            <label for="{{vm.name}}" ng-class="{ 'validation-failed-label' : {{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted }"> 
+                {{vm.label}}
+                <span ng-show=" vm.requiredVal ">*</span>
+                </label>
+        </label-area>
+        <div class="captorNGFormInput toggle-wrap">
+            <label class="toggle-radio">
+                <input name="vm.name" 
+                    type="radio" 
+                    value="true" 
+                    ng-model="vm.value" />
+                <span>Yes</span>
+            </label>
+            <label class="toggle-radio arrest-option">
+                <input name="vm.name" 
+                    type="radio" 
+                    value="false" 
+                    ng-model="vm.value" checked/>
+                <span>No</span>
+            </label>
+            <error-message ng-show="{{vm.name}}Form.{{vm.name}}.$invalid && vm.validationError && {{vm.name}}Form.$$parentForm.$submitted">
+                <span class="captorValidationErrorMsg" > {{vm.validationError}}</span>
+            </error-message>
+        </div>
+    </ng-form>
+</input-group>

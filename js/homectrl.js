@@ -41,6 +41,7 @@ var myApp = angular.module("captorAngularDisplay",['captorAngularElements','toas
     .controller('tinyMCEControls', function ($scope, toastr) {
         var self = this;
         self.tinyText = "";
+<<<<<<< HEAD
         self.save = function (myForm) {
             if (!myForm.$valid) {
                 $scope.formvalid = false;
@@ -51,6 +52,8 @@ var myApp = angular.module("captorAngularDisplay",['captorAngularElements','toas
                 // displayValues += "\n -->" + self.tinyText;
             }
         }
+=======
+>>>>>>> 0951a5706d17cd440343fde661c65a8e608064e6
     })
     .controller('dropdownControls', function ($scope, toastr) {
         this.example = [{
@@ -481,6 +484,7 @@ var myApp = angular.module("captorAngularDisplay",['captorAngularElements','toas
             "Description": "Wolf Pack Lanes"
         }];
 
+<<<<<<< HEAD
         var self = this;
     })
 
@@ -496,3 +500,6 @@ var myApp = angular.module("captorAngularDisplay",['captorAngularElements','toas
 .controller('otherCtrls',function($scope){
     this.radioVal = true;
 });
+=======
+    });
+>>>>>>> 0951a5706d17cd440343fde661c65a8e608064e6
